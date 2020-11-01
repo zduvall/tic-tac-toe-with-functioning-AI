@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Academy DOM API Tic-Tac-Toe Project</title>
+  <link rel="stylesheet" href="./site.css">
+</head>
+
+<body>
+  <div id="game">
+    <h1 class="announcement" id="game-status">Tic Tac Toe</h1>
+    <h2 class="sub-announcement" id="player-tracker">X's Turn</h1>
+
+      <div id="tic-tac-toe-board">
+        <div id="00" class="square row1 col1"></div>
+        <div id="01" class="square row1 col2"></div>
+        <div id="02" class="square row1 col3"></div>
+        <div id="10" class="square row2 col1"></div>
+        <div id="11" class="square row2 col2"></div>
+        <div id="12" class="square row2 col3"></div>
+        <div id="20" class="square row3 col1"></div>
+        <div id="21" class="square row3 col2"></div>
+        <div id="22" class="square row3 col3"></div>
+      </div>
+
+      <div class="actions">
+        <button id="new-game" disabled>New Game</button>
+        <div class="spacer"></div>
+        <button id="computer-choose">Computer Choose</button>
+        <div class="spacer"></div>
+        <button id="give-up">Give Up</button>
+      </div>
+  </div>
+  <script src="./tic-tac-toe.js"></script>
+</body>
+
+</html>
