@@ -191,6 +191,8 @@ window.addEventListener("DOMContentLoaded", () => {
             for (let key in oObject) {
                 if (oObject[key] === 3) {
                     header.innerHTML = 'Winner O!';
+                    // there was a bug with the computer choosing for the next player one extra time after winning, so I put this in
+                    count = 10;
                     // upon a winner, enable new game button and disable give up button, disable computer choose button
                     newGameButton.disabled = false;
                     giveUpButton.disabled = true;
@@ -203,6 +205,8 @@ window.addEventListener("DOMContentLoaded", () => {
             for (let key in xObject) {
                 if (xObject[key] === 3) {
                     header.innerHTML = 'Winner X!';
+                    // there was a bug with the computer choosing for the next player one extra time after winning, so I put this in
+                    count = 10;
                     // upon a winner, enable new game button and disable give up button, disable computer choose button
                     newGameButton.disabled = false;
                     giveUpButton.disabled = true;
@@ -294,9 +298,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // the problem is that the click saves up somehow until it finds two in a row, and 
-    // then it executes that same number again on computerChooseButton
-
+    // there's still a but here sometimes when the computer chooses twice
 
     // what happens when you click computer choose
     computerChooseButton.addEventListener('click', computerChoose);
@@ -314,15 +316,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // logic for computer to pick a spot
     function computerChoose() {
+
+
         if (count % 2 === 0) {
-            // if xObject has 2 aligned and there is a third empty spot, play there
-            if (compChooseIfTwoXs()) { return }
-            // otherwise if oObject has 2 aligned and there is a third empty spot, play there
-            else if (compChooseIfTwoOs()) { return }
-            // otherwise, play in random open spot
-            else { compChooseRandom() }
-        }
-        else {
             // if oObject has 2 aligned and there is a third empty spot, play there
             if (compChooseIfTwoOs()) { return }
             // otherwise if xObject has 2 aligned and there is a third empty spot, play there
@@ -330,38 +326,50 @@ window.addEventListener("DOMContentLoaded", () => {
             // otherwise, play in random open spot
             else { compChooseRandom() }
         }
+        else {
+            // if xObject has 2 aligned and there is a third empty spot, play there
+            if (compChooseIfTwoXs()) { return }
+            // otherwise if oObject has 2 aligned and there is a third empty spot, play there
+            else if (compChooseIfTwoOs()) { return }
+            // otherwise, play in random open spot
+            else { compChooseRandom() }
+        }
     }
 
     // function for computer to check if oObject has 2 in a row and if the third is open
     function compChooseIfTwoOs() {
+        let found = false;
         for (let key in oObject) {
-            if (oObject[key] === 2) {
+            if (oObject[key] === 2 && !found) {
                 const winningKeyArr = eval(`${key}Arr`);
                 winningKeyArr.forEach(el => {
                     if (TTTboardArr[el[0]][el[1]] !== 'X'
                         && TTTboardArr[el[0]][el[1]] !== 'O') {
                         placeComputerChoice(el[0], el[1]);
-                        return true;
+                        found = true;
                     }
                 });
             }
         }
+        return found;
     }
 
     // function for computer to check if xObject has 2 anywhere and if the third is open
     function compChooseIfTwoXs() {
+        let found = false;
         for (let key in xObject) {
-            if (xObject[key] === 2) {
+            if (xObject[key] === 2 && !found) {
                 const winningKeyArr = eval(`${key}Arr`);
                 winningKeyArr.forEach(el => {
                     if (TTTboardArr[el[0]][el[1]] !== 'X'
                         && TTTboardArr[el[0]][el[1]] !== 'O') {
                         placeComputerChoice(el[0], el[1]);
-                        return true;
+                        found = true;
                     }
                 });
             }
         }
+        return found;
     }
 
     // function for computer to choose a random square
@@ -381,8 +389,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // function for computer to place it's choice
     function placeComputerChoice(pccFirstIndex, pccSecondIndex) {
+        // there was a bug with the computer choosing for the next player one extra time after winning, 
+        // so I set the count to 10 and put this in
+        if (count > 9) return
         // O's turn
         if (count % 2 === 0) {
+            // there was a bug with the computer choosing for the next player one extra time after winning, 
+            // so I set the count to 10 and put this in
+            if (count > 9) return
             // if oObject has 2 anywhere play O in the spot to make it 3
             // otherwise if oObject has 2 anywhere play X in the spot to block
             // otherwise, play in random open spot
@@ -395,6 +409,9 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         // X's Turn
         else {
+            // there was a bug with the computer choosing for the next player one extra time after winning, 
+            // so I set the count to 10 and put this in
+            if (count > 9) return
             // if xObject has 2 anywhere play X in the spot to make it 3
             // otherwise if oObject has 2 anywhere play X in the spot to block
             // otherwise, play in random open spot
