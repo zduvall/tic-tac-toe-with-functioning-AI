@@ -191,8 +191,7 @@ window.addEventListener("DOMContentLoaded", () => {
             for (let key in oObject) {
                 if (oObject[key] === 3) {
                     header.innerHTML = 'Winner O!';
-                    // there was a bug with the computer choosing for the next player one extra time after winning, so I put this in
-                    count = 10;
+
                     // upon a winner, enable new game button and disable give up button, disable computer choose button
                     newGameButton.disabled = false;
                     giveUpButton.disabled = true;
@@ -205,8 +204,7 @@ window.addEventListener("DOMContentLoaded", () => {
             for (let key in xObject) {
                 if (xObject[key] === 3) {
                     header.innerHTML = 'Winner X!';
-                    // there was a bug with the computer choosing for the next player one extra time after winning, so I put this in
-                    count = 10;
+
                     // upon a winner, enable new game button and disable give up button, disable computer choose button
                     newGameButton.disabled = false;
                     giveUpButton.disabled = true;
@@ -298,7 +296,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // there's still a but here sometimes when the computer chooses twice
 
     // what happens when you click computer choose
     computerChooseButton.addEventListener('click', computerChoose);
@@ -319,17 +316,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
         if (count % 2 === 0) {
-            // if oObject has 2 aligned and there is a third empty spot, play there
+            // if oObject has 2 aligned and there is a third empty spot, play there (to win)
             if (compChooseIfTwoOs()) { return }
-            // otherwise if xObject has 2 aligned and there is a third empty spot, play there
+            // otherwise if xObject has 2 aligned and there is a third empty spot, play there (to block)
             else if (compChooseIfTwoXs()) { return }
             // otherwise, play in random open spot
             else { compChooseRandom() }
         }
         else {
-            // if xObject has 2 aligned and there is a third empty spot, play there
+            // if xObject has 2 aligned and there is a third empty spot, play there (to win)
             if (compChooseIfTwoXs()) { return }
-            // otherwise if oObject has 2 aligned and there is a third empty spot, play there
+            // otherwise if oObject has 2 aligned and there is a third empty spot, play there (to block)
             else if (compChooseIfTwoOs()) { return }
             // otherwise, play in random open spot
             else { compChooseRandom() }
@@ -389,14 +386,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // function for computer to place it's choice
     function placeComputerChoice(pccFirstIndex, pccSecondIndex) {
-        // there was a bug with the computer choosing for the next player one extra time after winning, 
-        // so I set the count to 10 and put this in
-        if (count > 9) return
+
         // O's turn
         if (count % 2 === 0) {
-            // there was a bug with the computer choosing for the next player one extra time after winning, 
-            // so I set the count to 10 and put this in
-            if (count > 9) return
+
             // if oObject has 2 anywhere play O in the spot to make it 3
             // otherwise if oObject has 2 anywhere play X in the spot to block
             // otherwise, play in random open spot
@@ -409,9 +402,6 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         // X's Turn
         else {
-            // there was a bug with the computer choosing for the next player one extra time after winning, 
-            // so I set the count to 10 and put this in
-            if (count > 9) return
             // if xObject has 2 anywhere play X in the spot to make it 3
             // otherwise if oObject has 2 anywhere play X in the spot to block
             // otherwise, play in random open spot
