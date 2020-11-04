@@ -1,8 +1,10 @@
 window.addEventListener("DOMContentLoaded", () => {
 
     // create variables that have the image element as a string
-    const xImage = '<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-x.svg"></img>';
-    const oImage = '<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-o.svg"></img>';
+    // const xImage = '<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-x.svg"></img>';
+    const xImage = '<img class="centered-pic" src="https://discovery.sndimg.com/content/dam/images/discovery/editorial/Curiosity/2020/3/Color_Dinosaurs_Getty_Images.jpg.rend.hgtvcom.616.616.suffix/1583454329186.jpeg"></img>';
+    // const oImage = '<img src="https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-o.svg"></img>';
+    const oImage = '<img class="centered-pic" src="https://animalfactguide.com/wp-content/uploads/2013/01/hippo.jpg"></img>';
 
     // Variables for different elements
     const header = document.getElementById('game-status');
