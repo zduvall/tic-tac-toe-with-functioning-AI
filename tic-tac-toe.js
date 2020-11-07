@@ -41,9 +41,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // set player tracker to the right turn
         if (count % 2 === 0) {
-            playerTracker.innerHTML = "O's Turn"
+            playerTracker.innerHTML = "Hippo's Turn"
         } else {
-            playerTracker.innerHTML = "X's Turn"
+            playerTracker.innerHTML = "Dino's Turn"
         }
 
         // check if there is a winner, in case you hit refresh after winning but before new game 
@@ -80,7 +80,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 // O's Turn
                 if (count % 2 === 0) {
                     // change turn indicator
-                    playerTracker.innerHTML = "X's Turn"
+                    playerTracker.innerHTML = "Dino's Turn"
                     // put oImage into div
                     event.target.innerHTML = oImage;
                     // put O into array at correct index
@@ -90,7 +90,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 }
                 // X's Turn
                 else {
-                    playerTracker.innerHTML = "O's Turn"
+                    playerTracker.innerHTML = "Hippo's Turn"
                     // put xImage into div
                     event.target.innerHTML = xImage;
                     // put O into array at correct index
@@ -192,7 +192,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (count % 2 === 0) {  // 'O' player's turn (when count % 2 is 0)
             for (let key in oObject) {
                 if (oObject[key] === 3) {
-                    header.innerHTML = 'Winner O!';
+                    header.innerHTML = 'Winner Hippo!';
 
                     // upon a winner, enable new game button and disable give up button, disable computer choose button
                     newGameButton.disabled = false;
@@ -205,7 +205,7 @@ window.addEventListener("DOMContentLoaded", () => {
         } else {                // 'X' player's turn (when count % 2 isn't 0)
             for (let key in xObject) {
                 if (xObject[key] === 3) {
-                    header.innerHTML = 'Winner X!';
+                    header.innerHTML = 'Winner Dino!';
 
                     // upon a winner, enable new game button and disable give up button, disable computer choose button
                     newGameButton.disabled = false;
@@ -252,7 +252,7 @@ window.addEventListener("DOMContentLoaded", () => {
         oArray = [];
 
         // reset player tracker
-        playerTracker.innerHTML = "X's Turn"
+        playerTracker.innerHTML = "Dino's Turn"
 
         // clear out the images
         squares.forEach(square => {
@@ -399,7 +399,7 @@ window.addEventListener("DOMContentLoaded", () => {
             compPlaceOat.innerHTML = oImage;
             const [_, row, col] = compPlaceOat.classList;
             TTTboardArr[pccFirstIndex][pccSecondIndex] = 'O';
-            playerTracker.innerHTML = "X's Turn";
+            playerTracker.innerHTML = "Dino's Turn";
             updateObjArrLocalStorage(oObject, oArray, row, col, pccFirstIndex, pccSecondIndex);
         }
         // X's Turn
@@ -411,7 +411,7 @@ window.addEventListener("DOMContentLoaded", () => {
             compPlaceXat.innerHTML = xImage;
             const [_, row, col] = compPlaceXat.classList;
             TTTboardArr[pccFirstIndex][pccSecondIndex] = 'X';
-            playerTracker.innerHTML = "O's Turn";
+            playerTracker.innerHTML = "Hippo's Turn";
             updateObjArrLocalStorage(xObject, xArray, row, col, pccFirstIndex, pccSecondIndex);
         }
     }
