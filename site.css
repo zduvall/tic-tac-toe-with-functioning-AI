@@ -39,27 +39,27 @@ button {
   color: rgb(218, 123, 0);
 }
 
-.col-1 {
+.col1 {
   justify-self: start;
 }
 
-.col-2 {
+.col2 {
   justify-self: center;
 }
 
-.col-3 {
+.col3 {
   justify-self: end;
 }
 
-.row-1 {
+.row1 {
   align-self: start;
 }
 
-.row-2 {
+.row2 {
   align-self: center;
 }
 
-.row-3 {
+.row3 {
   align-self: end;
 }
 
