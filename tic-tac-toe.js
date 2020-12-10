@@ -275,9 +275,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // winner based on who gives up (% to determine player's turn is opposite from above b/c above we run the % check after inrementing on click)
         if (count % 2 === 0) {      // X gives up on his/her turn, so O player wins
-            header.innerHTML = 'Winner O!';
+            header.innerHTML = 'Dino Wins!';
         } else {                    // O gives up on his/her turn, so X player wins
-            header.innerHTML = 'Winner X!';
+            header.innerHTML = 'Hippo Wins!';
         }
 
         // enable new game button and disable give up button
